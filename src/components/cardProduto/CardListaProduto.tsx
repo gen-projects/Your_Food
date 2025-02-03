@@ -1,4 +1,4 @@
-import { PencilSimple } from "@phosphor-icons/react"
+import { PencilSimple, Trash } from "@phosphor-icons/react"
 import Produto from "../../models/Produto"
 
 interface CardListaProdutoProps{
@@ -12,8 +12,9 @@ function CardListaProduto({produto}: CardListaProdutoProps) {
             <img src="https://i.imgur.com/vvfBypS.png" alt="imagem produto" className="object-contain w-full h-full"/>
         </div>
         <div className="text-left w-full">
-            <div className="flex h-6 justify-end items-end">
+            <div className="flex flex-col h-6 justify-end items-end">
                 <PencilSimple size={20} className="hover:opacity-70 hover:size-6"/>
+                <Trash size={20} className="hover:opacity-70 hover:size-6"/>
             </div>
             <h3>{produto.loja}</h3>
             <h2 className="text-lg font-semibold">{produto.nome}</h2>
