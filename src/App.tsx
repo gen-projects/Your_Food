@@ -3,6 +3,7 @@ import { AuthProvider } from "./contexts/AuthContext";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./pages/home/Home";
 import CardCategoria from "./components/cardCategoria/CardCategoria";
+import Categorias from "./pages/categorias/Categorias";
 
 function App() {
   return (
@@ -14,7 +15,7 @@ function App() {
           <div className="min-h-[88.7dvh]">
             <h1>Navbar</h1>
             <Routes>
-              <Route path="/" element={<CardCategoria />} />
+              <Route path="/" element={<Categorias />} />
               <Route path="/" element={<h1>Login</h1>} />
               <Route path="/home" element={<h1>Home</h1>} />
               <Route path="/cadastro" element={<h1>Cadastro </h1>} />
