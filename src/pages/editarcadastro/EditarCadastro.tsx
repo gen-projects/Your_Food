@@ -2,11 +2,11 @@ import React from 'react';
 import Modal from '../../components/modal/Modal';
 import BotaoVermelho from '../../components/botao/BotaoVermelho';
 
-const Cadastro: React.FC = () => {
+const EditarCadastro: React.FC = () => {
     return (
         <div className="flex items-center justify-center min-h-screen bg-gray-100">
             <div className="bg-white p-6 rounded-lg shadow-md w-96">
-                <h1 className="text-2xl font-bold text-center mb-4 font-oswald">CADASTRAR PRODUTO</h1>
+                <h1 className="text-2xl font-bold text-center mb-4 font-oswald">EDITAR PRODUTO</h1>
 
                 <h2 className="text-lg font-semibold mb-2 text-[#B32B3B]">Loja *</h2>
                 <input
@@ -58,4 +58,4 @@ const Cadastro: React.FC = () => {
     );
 };
 
-export default Cadastro;
+export default EditarCadastro;

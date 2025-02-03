@@ -1,8 +1,8 @@
 import { ToastContainer } from "react-toastify";
 import { AuthProvider } from "./contexts/AuthContext";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Modal from "./components/modal/Modal";
-import Cadastro from "./pages/cadastro/Cadastro"; // Corrigindo o caminho da importação
+import Cadastro from "./pages/cadastro/Cadastro";
+import EditarCadastro from "./pages/editarcadastro/EditarCadastro";
 
 function App() {
   return (
@@ -16,6 +16,7 @@ function App() {
               <Route path="/" element={<h1>Login</h1>} />
               <Route path="/home" element={<h1>Home</h1>} />
               <Route path="/cadastro" element={<Cadastro />} />
+              <Route path="/editarcadastro" element={<EditarCadastro/>}/>
               <Route path="/categorias" element={<h1>ListaCategorias</h1>} />
               <Route path="/cadastrarcategoria" element={<h1>FormCategoria</h1>} />
               <Route path="/editarcategoria/:id" element={<h1>FormCategoria</h1>} />
