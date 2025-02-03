@@ -10,7 +10,8 @@ function BotaoBranco({ texto,  onClick = function() {}, isLoading = false }: Bot
   return (
     <button
       onClick={onClick}
-      className="bg-white text-black w-full font-bold rounded-full px-6 py-2 hover:bg-gray-200 transition-colors duration-200"
+      className="bg-white text-black w-full font-bold rounded-full px-6 py-2
+       hover:bg-gray-200 transition-colors duration-200 cursor-pointer"
     >
       {isLoading ? (
         <div className="flex justify-center items-center">
