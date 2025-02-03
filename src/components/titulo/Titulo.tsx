@@ -6,7 +6,7 @@ interface tituloProps {
 function Titulo(props: tituloProps) {
     return (
         <>
-            <h1 className={`${props.color} font-bold`}>{props.texto}</h1>
+            <h1 className={`${props.color} font-bold text-3xl`}>{props.texto}</h1>
         </>
     );
 }
