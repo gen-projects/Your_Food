@@ -69,7 +69,6 @@ function CaixaDeTexto({
           peer-focus:text-sm"
         htmlFor={id}
       >
-        {placeholder}
       </label>
     </div>
   );
