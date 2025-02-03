@@ -1,6 +1,7 @@
 import { ToastContainer } from "react-toastify";
 import { AuthProvider } from "./contexts/AuthContext";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import CadastrarUsuario from "./pages/cadastrarusuario/CadastrarUsuario";
 
 function App() {
   return (
@@ -15,7 +16,7 @@ function App() {
               <Route path="/" element={<h1>Home</h1>} />
               <Route path="/" element={<h1>Login</h1>} />
               <Route path="/home" element={<h1>Home</h1>} />
-              <Route path="/cadastro" element={<h1>Cadastro </h1>} />
+              <Route path="/cadastro" element={<CadastrarUsuario/>} />
               <Route path="/login" element={<h1>Login </h1>} />
               <Route path="/categorias" element={<h1>ListaCategorias </h1>} />
               <Route
