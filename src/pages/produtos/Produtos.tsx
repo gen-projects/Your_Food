@@ -56,6 +56,11 @@ function Produtos() {
             }
         }
 
+        function editarProduto(id: number) {
+            navigate(`/editarproduto/${id}`); // Redireciona para a rota de edição
+        }
+        
+
     useEffect(() => {
         if (token === '') {
             alert('Você precisa estar logado!')
@@ -112,6 +117,7 @@ function Produtos() {
                             key={produto.id}
                             produto={produto}
                             onDelete={deletarProduto}
+                            onEdit={editarProduto}
                         />
                     ))}
                 </div>

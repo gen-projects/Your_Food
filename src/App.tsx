@@ -47,8 +47,9 @@ function App() {
               />
               <Route path="/deletarcategoria/:id" element={<Categorias />}/>
               <Route path="/produtos" element={<Produtos />} />
+              <Route path="/sobre" element={<Sobre />} />
               <Route path="/cadastrarproduto" element={<Cadastro />} />
-              <Route path="/editarproduto/:id" element={<EditarCadastro />} />
+              <Route path="/editarproduto/:id" element={<Cadastro />} />
               <Route path="/deletarproduto/:id" element={<h1>DeletarProduto</h1>} />
               <Route path="/perfil" element={<Perfil />} />
             </Routes>

@@ -6,9 +6,10 @@ import Texto from "../texto/Texto"
 interface CardListaProdutoProps{
     produto: Produto
     onDelete: (id: string) => Promise<void>;
+    onEdit: (id: number) => void;
 }
 
-function CardListaProduto({produto,onDelete}: CardListaProdutoProps) {
+function CardListaProduto({produto,onDelete, onEdit}: CardListaProdutoProps) {
     return (
     <div className="flex flex-row border border-gray-400 rounded-md text-start p-3 w-full h-50 gap-2 items-center shadow-md">
         <div className="flex items-center justify-center w-46 h-36 mr-2 rounded-lg inset-shadow-sm inset-shadow-gray-500">
@@ -33,7 +34,7 @@ function CardListaProduto({produto,onDelete}: CardListaProdutoProps) {
         </div>
         <div className="flex flex-col h-full justify-start items-end">
                 <PencilSimple size={24} className="text-gray-600 cursor-pointer 
-                    hover:opacity-80 hover:scale-110 transition-transform duration-300"/>
+                    hover:opacity-80 hover:scale-110 transition-transform duration-300" onClick={() => onEdit(produto.id)}/>
                 <Trash size={24} className="text-red-500 cursor-pointer 
                     hover:opacity-80 hover:scale-110 transition-transform duration-300" onClick={() => onDelete(String(produto.id))}/>
             </div>

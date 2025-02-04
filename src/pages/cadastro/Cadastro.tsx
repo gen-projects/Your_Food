@@ -7,7 +7,7 @@ import { atualizar, buscar, cadastrar } from '../../services/service';
 import Categoria from '../../models/Categoria';
 import { AuthContext } from '../../contexts/AuthContext';
 
-function Cadastro(){
+function Cadastro() {
 
     const navigate = useNavigate();
 
@@ -99,7 +99,7 @@ function Cadastro(){
                         Authorization: token,
                     },
                 });
-
+                navigate("/produtos")
                 alert('Produto atualizada com sucesso')
 
             } catch (error: any) {
@@ -140,7 +140,9 @@ function Cadastro(){
             <div className="bg-white p-6 rounded-lg shadow-md w-96">
                 <form action="" onSubmit={gerarNovoProduto}>
 
-                    <h1 className="text-2xl font-bold text-center mb-4 font-oswald">CADASTRAR PRODUTO</h1>
+                    <h1 className="text-2xl font-bold text-center mb-4 font-oswald">
+                        {id ? 'ATUALIZAR PRODUTO' : 'CADASTRAR PRODUTO'}
+                    </h1>
 
                     <h2 className="text-lg font-semibold mb-2 text-[#B32B3B]">Produto *</h2>
                     <input
@@ -200,8 +202,7 @@ function Cadastro(){
 
                     </select>
 
-                    <BotaoVermelho texto="Adicionar" />
-
+                    <BotaoVermelho texto={id ? "Atualizar Produto" : "Cadastrar Produto"} />
                 </form>
 
             </div>
