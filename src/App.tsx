@@ -1,7 +1,7 @@
 import { ToastContainer } from "react-toastify";
 import { AuthProvider } from "./contexts/AuthContext";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Login from "./pages/login/Login";
+import Navbar from "./components/navbar/Navbar";
 
 function App() {
   return (
@@ -11,7 +11,9 @@ function App() {
         <ToastContainer />
         <BrowserRouter>
           <div className="min-h-[88.7dvh]">
-            <h1>Navbar</h1>
+            
+            <Navbar/>
+
             <Routes>
               <Route path="/" element={<h1>Home</h1>} />
               <Route path="/" element={<h1>Login</h1>} />
