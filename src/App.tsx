@@ -1,11 +1,23 @@
 import { ToastContainer } from "react-toastify";
 import { AuthProvider } from "./contexts/AuthContext";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+
 import Navbar from "./components/navbar/Navbar";
+
+import Perfil from "./pages/perfil/perfil";
+import FooterPrincipal from "./components/footer/FooterPrincipal";
+import FooterLogado from "./components/footer/FooterLogado";
+import Home from "./pages/home/Home";
+import CardCategoria from "./components/cardCategoria/CardCategoria";
+import Categorias from "./pages/categorias/Categorias";
+import CadastrarUsuario from "./pages/cadastrarusuario/CadastrarUsuario";
+import Cadastro from "./pages/cadastro/Cadastro";
+import EditarCadastro from "./pages/editarcadastro/EditarCadastro";
+import Login from "./pages/login/Login";
+import Sobre from "./pages/sobre/Sobre";
 
 function App() {
   return (
-    
     <>
       <AuthProvider>
         <ToastContainer />
@@ -15,37 +27,28 @@ function App() {
             <Navbar/>
 
             <Routes>
-              <Route path="/" element={<h1>Home</h1>} />
-              <Route path="/" element={<h1>Login</h1>} />
-              <Route path="/home" element={<h1>Home</h1>} />
-              <Route path="/cadastro" element={<h1>Cadastro </h1>} />
-              <Route path="/login" element={<h1>Login </h1>} />
-              <Route path="/categorias" element={<h1>ListaCategorias </h1>} />
+              <Route path="/" element={<Login />} />
+              <Route path="/home" element={<Home />} />
+              <Route path="/cadastro" element={<CadastrarUsuario />} />
+              <Route path="/editarproduto" element={<EditarCadastro/>}/>
+              <Route path="/login" element={<Login />} />
+              <Route path="/categorias" element={<Categorias />} />
               <Route
                 path="/cadastrarcategoria"
-                element={<h1>FormCategoria </h1>}
+                element={<p>a</p>}
               />
               <Route
                 path="/editarcategoria/:id"
-                element={<h1>FormCategoria </h1>}
+                element={<p>a</p>}
               />
-              <Route
-                path="/deletarcategoria/:id"
-                element={<h1>DeletarCategoria </h1>}
-              />
-              <Route path="/produtos" element={<h1>ListaProdutos </h1>} />
-              <Route path="/cadastrarproduto" element={<h1>FormProduto</h1>} />
-              <Route
-                path="/editarproduto/:id"
-                element={<h1>FormProduto </h1>}
-              />
-              <Route
-                path="/deletarproduto/:id"
-                element={<h1>DeletarProduto </h1>}
-              />
-              <Route path="/perfil" element={<h1>Perfil </h1>} />
+              <Route path="/deletarcategoria/:id" element={<Categorias />}/>
+              <Route path="/produtos" element={<Produtos />} />
+              <Route path="/cadastrarproduto" element={<Cadastro />} />
+              <Route path="/editarproduto/:id" element={<EditarCadastro />} />
+              <Route path="/deletarproduto/:id" element={<h1>DeletarProduto</h1>} />
+              <Route path="/perfil" element={<h1>Perfil</h1>} />
             </Routes>
-            <h1>Footer</h1>
+            <FooterPrincipal />
           </div>
         </BrowserRouter>
       </AuthProvider>

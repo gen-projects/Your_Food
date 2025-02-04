@@ -6,7 +6,7 @@ interface subtituloProps {
 function Subtitulo(props: subtituloProps) {
     return (
         <>
-            <h2 className={`${props.color} font-bold`}>{props.texto}</h2>
+            <h2 className={`${props.color} font-bold text-2xl`}>{props.texto}</h2>
         </>
     );
 }
