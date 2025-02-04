@@ -6,7 +6,7 @@ interface textoProps {
 function Texto(props: textoProps) {
     return(
         <>
-            <p className={`${props.cor}`}>{`${props.texto}`}</p>
+            <p className={`${props.cor} text-3x1`}>{`${props.texto}`}</p>
         </>
     );
 }
