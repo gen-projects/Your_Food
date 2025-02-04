@@ -14,6 +14,7 @@ import CadastrarUsuario from "./pages/cadastrarusuario/CadastrarUsuario";
 import Cadastro from "./pages/cadastro/Cadastro";
 import EditarCadastro from "./pages/editarcadastro/EditarCadastro";
 import Login from "./pages/login/Login";
+import Produtos from "./pages/produtos/Produtos";
 
 
 function App() {
@@ -40,7 +41,7 @@ function App() {
                 element={<p>a</p>}
               />
               <Route path="/deletarcategoria/:id" element={<Categorias />}/>
-              <Route path="/produtos" element={<h1>ListaProdutos </h1>} />
+              <Route path="/produtos" element={<Produtos />} />
               <Route path="/cadastrarproduto" element={<Cadastro />} />
               <Route path="/editarproduto/:id" element={<EditarCadastro />} />
               <Route path="/deletarproduto/:id" element={<h1>DeletarProduto</h1>} />
