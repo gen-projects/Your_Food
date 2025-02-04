@@ -19,9 +19,7 @@ function Produtos() {
     const [mostrarCadastro, setMostrarCadastro] = useState(false);//usado para barra de pesquisa
 
     const { usuario, handleLogout } = useContext(AuthContext)
-    // const token = usuario.token
-
-    const [token, setToken] = useState('Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyb290QHJvb3QuY29tIiwiaWF0IjoxNzM4NjM5MzMwLCJleHAiOjE3Mzg2NDI5MzB9.Y1j2Daf0oyAeJrWHOEPSopIRqGb45ymzrrza5QCMcaI')
+    const token = usuario.token
 
     async function buscarProdutos() {
         try{
