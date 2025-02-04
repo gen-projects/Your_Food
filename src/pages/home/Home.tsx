@@ -7,6 +7,8 @@ import { recomendacaoSaudavel } from "../../services/service"
 import IconeRedondo from "../../components/iconeredondo/IconeRedondo"
 import CardProduto from "../../components/cardProduto/CardProduto"
 import Faq from "../../components/faq/Faq"
+import { Link } from "react-router-dom"
+import Login from "../login/Login"
 
 
 function Home() {
@@ -38,9 +40,12 @@ function Home() {
                     cor="text-white"
                 />
                 <div className="m-1">
-                    <BotaoBranco
-                        texto="Entrar"
-                    />
+
+                    <Link to={"/"}>
+                        <BotaoBranco
+                            texto="Entrar"
+                        />
+                    </Link>
                 </div>
             </div>
 
@@ -74,7 +79,10 @@ function Home() {
                         texto="MAIS que apenas um Delivery, aqui nós pensamos na sua alimentação pensamos em VOCÊ"
                         cor="text-white"
                     />
-                    <p className="text-white font-semibold underline cursor-pointer mb-6">Descubra produtos saudáveis</p>
+                    <Link to={"/produtos"}>
+                        <p className="text-white font-semibold underline cursor-pointer mb-6">Descubra produtos saudáveis</p>
+                    </Link>
+                    
                 </div>
                 <div className="flex flex-row gap-2 pb-5 overflow-x-auto w-full justify-start md:justify-center ml-4">
                     {/* Mocado enquanto não libera end-point no backend */}

@@ -38,7 +38,7 @@ function Login() {
             >
                 <h2 className="text-slate-900 text-5xl">Entrar</h2>
 
-                <IconeRedondo link= {Icone} />
+                <IconeRedondo link= {"url"} />
 
                 <div className="flex flex-col w-full">
                     <label htmlFor="usuario">Usuário</label>

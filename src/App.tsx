@@ -14,7 +14,10 @@ import CadastrarUsuario from "./pages/cadastrarusuario/CadastrarUsuario";
 import Cadastro from "./pages/cadastro/Cadastro";
 import EditarCadastro from "./pages/editarcadastro/EditarCadastro";
 import Login from "./pages/login/Login";
+
+import Produtos from "./pages/produtos/Produtos";
 import Sobre from "./pages/sobre/Sobre";
+
 
 function App() {
   return (
