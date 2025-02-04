@@ -85,7 +85,6 @@ function Cadastro(){
             ...produto,
             [e.target.name]: e.target.value,
             categoria: categoria,
-            usuario: usuario,
         });
     }
 

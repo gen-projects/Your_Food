@@ -2,7 +2,7 @@ import { ToastContainer } from "react-toastify";
 import { AuthProvider } from "./contexts/AuthContext";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-import Navbar from "./components/navbar/Navbar";
+import Navbar from "./components/navbar/NavBar";
 
 import Perfil from "./pages/perfil/perfil";
 import FooterPrincipal from "./components/footer/FooterPrincipal";
@@ -30,8 +30,9 @@ function App() {
             <Navbar/>
 
             <Routes>
-              <Route path="/" element={<Login />} />
               <Route path="/home" element={<Home />} />
+              <Route path="/" element={<Home />} />
+              <Route path="/login" element={<Login />} />
               <Route path="/cadastro" element={<CadastrarUsuario />} />
               <Route path="/editarproduto" element={<EditarCadastro/>}/>
               <Route path="/login" element={<Login />} />
@@ -49,7 +50,7 @@ function App() {
               <Route path="/cadastrarproduto" element={<Cadastro />} />
               <Route path="/editarproduto/:id" element={<EditarCadastro />} />
               <Route path="/deletarproduto/:id" element={<h1>DeletarProduto</h1>} />
-              <Route path="/perfil" element={<h1>Perfil</h1>} />
+              <Route path="/perfil" element={<Perfil />} />
             </Routes>
             <FooterPrincipal />
           </div>

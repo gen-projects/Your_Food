@@ -58,11 +58,11 @@ const Navbar: React.FC = () => {
                 >
                     <ul className="flex flex-col space-y-2">
                         <li className="text-gray-800 hover:text-red-500"><Link to={'/'}>Home</Link></li>
-                        <li className="text-gray-800 hover:text-red-500"><Link to={'/'}>Perfil</Link></li>
-                        <li className="text-gray-800 hover:text-red-500"><Link to={'/'}>Produto</Link></li>
-                        <li className="text-gray-800 hover:text-red-500"><Link to={'/'}>Categoria</Link></li>
+                        <li className="text-gray-800 hover:text-red-500"><Link to={'/perfil'}>Perfil</Link></li>
+                        <li className="text-gray-800 hover:text-red-500"><Link to={'/produtos'}>Produto</Link></li>
+                        <li className="text-gray-800 hover:text-red-500"><Link to={'/categorias'}>Categoria</Link></li>
                         <li className="text-gray-800 hover:text-red-500"><Link to={'/'}>Contato</Link></li>
-                        <li className="text-gray-800 hover:text-red-500"><Link to={'/'}>Sobre</Link></li>
+                        <li className="text-gray-800 hover:text-red-500"><Link to={'/sobre'}>Sobre</Link></li>
                         
                     </ul>
                 </nav>

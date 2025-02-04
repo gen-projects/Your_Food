@@ -41,7 +41,7 @@ function Home() {
                 />
                 <div className="m-1">
 
-                    <Link to={"/"}>
+                    <Link to={"/login"}>
                         <BotaoBranco
                             texto="Entrar"
                         />
