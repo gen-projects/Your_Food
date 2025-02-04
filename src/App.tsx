@@ -1,10 +1,17 @@
 import { ToastContainer } from "react-toastify";
 import { AuthProvider } from "./contexts/AuthContext";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import FooterPrincipal from "./components/footer/FooterPrincipal";
+import FooterLogado from "./components/footer/FooterLogado";
+import Home from "./pages/home/Home";
+import CardCategoria from "./components/cardCategoria/CardCategoria";
+import Categorias from "./pages/categorias/Categorias";
+import CadastrarUsuario from "./pages/cadastrarusuario/CadastrarUsuario";
 import Cadastro from "./pages/cadastro/Cadastro";
 import EditarCadastro from "./pages/editarcadastro/EditarCadastro";
 import Login from "./pages/login/Login";
 import Sobre from "./pages/sobre/Sobre";
+
 
 function App() {
   return (
@@ -15,6 +22,7 @@ function App() {
           <div className="min-h-[88.7dvh]">
             <h1>Navbar</h1>
             <Routes>
+              <Route path="/" element={<Categorias />} />
               <Route path="/" element={<h1>Login</h1>} />
               <Route path="/home" element={<h1>Home</h1>} />
               <Route path="/sobre" element={<Sobre />} />
