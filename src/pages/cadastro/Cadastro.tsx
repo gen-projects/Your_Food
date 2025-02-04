@@ -50,7 +50,7 @@ const Cadastro: React.FC = () => {
                 />
 
                 <Modal label="Abrir Modal">
-                 <BotaoVermelho texto="Adicionar"/>
+                    <BotaoVermelho texto="Adicionar"/>
                 </Modal>
 
             </div>

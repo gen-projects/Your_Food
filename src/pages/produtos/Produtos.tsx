@@ -9,11 +9,14 @@ import { useNavigate } from 'react-router-dom'
 import IconeRedondo from '../../components/iconeredondo/IconeRedondo'
 import Produto from '../../models/Produto'
 import CardListaProduto from '../../components/cardProduto/CardListaProduto'
+import Cadastro from '../cadastro/Cadastro'
 
 function Produtos() {
     const navigate = useNavigate();
     const [categorias, setCategorias] = useState<Categoria[]>([])
     const [produtos, setProdutos] = useState<Produto[]>([])
+
+    const [mostrarCadastro, setMostrarCadastro] = useState(false);//usado para barra de pesquisa
 
     const { usuario, handleLogout } = useContext(AuthContext)
     // const token = usuario.token
@@ -74,6 +77,10 @@ function Produtos() {
         console.log("faz nada ainda")
     }
 
+    const handleAddClick = () => {
+        navigate("/cadastrarproduto"); // Navega para a nova página
+    };
+
     return (
         <div className="flex flex-col items-center justify-center text-center">
             <Titulo texto="CATEGORIAS" />
@@ -95,7 +102,7 @@ function Produtos() {
             <div className="pt-2 flex justify-center items-center w-full max-w-2xl">
                 <BarraDePesquisa
                     searchValue=""
-                    onAddClick={nada}
+                    onAddClick={handleAddClick}
                     onSearchChange={nada}
                 />
             </div>
