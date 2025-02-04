@@ -11,6 +11,7 @@ import Cadastro from "./pages/cadastro/Cadastro";
 import EditarCadastro from "./pages/editarcadastro/EditarCadastro";
 import Login from "./pages/login/Login";
 import Sobre from "./pages/sobre/Sobre";
+import FormCategoria from "./components/categoria/formcategoria/FormCategoria";
 
 
 function App() {
@@ -22,7 +23,7 @@ function App() {
           <div className="min-h-[88.7dvh]">
             <h1>Navbar</h1>
             <Routes>
-              <Route path="/" element={<Categorias />} />
+              <Route path="/" element={<FormCategoria />} />
               <Route path="/" element={<h1>Login</h1>} />
               <Route path="/home" element={<h1>Home</h1>} />
               <Route path="/sobre" element={<Sobre />} />
