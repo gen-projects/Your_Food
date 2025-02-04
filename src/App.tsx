@@ -1,6 +1,7 @@
 import { ToastContainer } from "react-toastify";
 import { AuthProvider } from "./contexts/AuthContext";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Perfil from "./pages/perfil/perfil";
 
 function App() {
   return (
@@ -40,7 +41,7 @@ function App() {
                 path="/deletarproduto/:id"
                 element={<h1>DeletarProduto </h1>}
               />
-              <Route path="/perfil" element={<h1>Perfil </h1>} />
+              <Route path="/perfil" element={<Perfil/>} />
             </Routes>
             <h1>Footer</h1>
           </div>
