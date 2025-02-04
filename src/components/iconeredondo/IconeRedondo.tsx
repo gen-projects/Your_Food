@@ -2,7 +2,7 @@ interface iconeProps {
     bgCor?: string;
     alt?:string;
     link: string;
-    nome: string;
+    nome?: string;
 }
 
 function IconeRedondo(props: iconeProps) {
