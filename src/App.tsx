@@ -1,6 +1,9 @@
 import { ToastContainer } from "react-toastify";
 import { AuthProvider } from "./contexts/AuthContext";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import FooterPrincipal from "./components/footer/FooterPrincipal";
+import FooterLogado from "./components/footer/FooterLogado";
+
 
 import Home from "./pages/home/Home";
 import CardCategoria from "./components/cardCategoria/CardCategoria";
@@ -11,6 +14,7 @@ import CadastrarUsuario from "./pages/cadastrarusuario/CadastrarUsuario";
 import Cadastro from "./pages/cadastro/Cadastro";
 import EditarCadastro from "./pages/editarcadastro/EditarCadastro";
 import Login from "./pages/login/Login";
+
 
 function App() {
   return (
@@ -36,7 +40,7 @@ function App() {
                 path="/editarcategoria/:id"
                 element={<h1>FormCategoria </h1>}
               />
-              <Routepath="/deletarcategoria/:id" element={<h1>DeletarCategoria </h1>}/>
+              <Route path="/deletarcategoria/:id" element={<h1>DeletarCategoria </h1>}/>
               <Route path="/produtos" element={<h1>ListaProdutos </h1>} />
               <Route path="/cadastrarproduto" element={<h1>FormProduto</h1>} />
               <Route path="/editarproduto/:id" element={<h1>FormProduto</h1>} />
