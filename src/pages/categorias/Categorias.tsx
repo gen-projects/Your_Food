@@ -12,9 +12,7 @@ function Categorias() {
     const [categorias, setCategorias] = useState<Categoria[]>([])
 
     const { usuario, handleLogout } = useContext(AuthContext)
-    // const token = usuario.token
-
-    const [token, setToken] = useState('Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyb290QHJvb3QuY29tIiwiaWF0IjoxNzM4NjMyODk3LCJleHAiOjE3Mzg2MzY0OTd9.zTHMma0RBXAXSbdyhnrZ1AmkdPfJ-epIBVUe_6hPvJU')
+    const token = usuario.token
 
     async function buscarCategorias() {
         try {
