@@ -3,6 +3,12 @@ import Subtitulo from "../../components/subtitulo/Subtitulo";
 import Texto from "../../components/texto/Texto";
 import Logo from "../../assets/images/icon_vermelho_bg_branco.png";
 import Yfooder from "../../assets/images/17004.png";
+import bianca from "../../assets/images/bianca.jpeg";
+import dandara from "../../assets/images/dandara.jpeg";
+import gabriel from "../../assets/images/gabriel.jpeg";
+import keven from "../../assets/images/keven.jpeg";
+import matheus from "../../assets/images/matheus.jpeg";
+
 import { useState, useEffect } from "react";
 
 function Sobre() {
@@ -20,18 +26,18 @@ function Sobre() {
             sections.forEach(section => {
                 const rect = section.getBoundingClientRect();
                 const isInViewport = rect.top <= window.innerHeight * 0.8;
-                
+
                 if (isInViewport) {
                     const sectionId = section.getAttribute('data-section');
                     setIsVisible(prev => ({ ...prev, [sectionId]: true }));
                 }
             });
         };
-        
+
         window.addEventListener('scroll', handleScroll);
         // Trigger once on load
         handleScroll();
-        
+
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
@@ -52,7 +58,7 @@ function Sobre() {
             </div>
 
             {/* Nossa Missão - Card com efeito */}
-            <div 
+            <div
                 className={`animate-section bg-white rounded-xl shadow-lg overflow-hidden mb-16 transform transition-all duration-700 ${isVisible.mission ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}
                 data-section="mission"
             >
@@ -77,7 +83,7 @@ function Sobre() {
             </div>
 
             {/* Nossa história - Seção com imagem de fundo */}
-            <div 
+            <div
                 className={`animate-section relative bg-gray-900 rounded-xl overflow-hidden mb-16 shadow-xl transform transition-all duration-700 ${isVisible.history ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}
                 data-section="history"
             >
@@ -104,7 +110,7 @@ function Sobre() {
             </div>
 
             {/* Nossos valores - Cards interativos */}
-            <div 
+            <div
                 className={`animate-section mb-16 transform transition-all duration-700 ${isVisible.values ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}
                 data-section="values"
             >
@@ -163,37 +169,37 @@ function Sobre() {
                         <p className="text-gray-600 pl-16">Compromisso com sua saúde, oferecendo informações nutricionais precisas e recomendações com embasamento científico.</p>
                     </div>
                 </div>
-                
+
                 <div className="mt-8 bg-gradient-to-r from-green-50 to-green-100 p-5 rounded-xl border border-green-200 text-center shadow-sm">
                     <p className="text-gray-700 text-lg">Estamos ao seu lado na correria do dia-a-dia e nos momentos de cuidado e reflexão.</p>
                 </div>
             </div>
 
             {/* Nossos Yfooders - Grid com card hover effect */}
-            <div 
+            <div
                 className={`animate-section mb-16 transform transition-all duration-700 ${isVisible.team ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}
                 data-section="team"
             >
                 <div className="text-center mb-8">
-                    <h3 className="text-3xl font-bold text-gray-800">Nossos Yfooders</h3>
+                    <h3 className="text-3xl font-bold text-gray-800">Nossos YourChefs</h3>
                     <div className="w-24 h-1 bg-red-500 mx-auto mt-3 rounded-full"></div>
                     <p className="text-gray-600 mt-4 text-lg">A equipe apaixonada por trás do YourFood</p>
                 </div>
 
-                <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
+                <div className="grid grid-cols-2 md:grid-cols-3 gap-6"> 
                     {[
-                        { name: "Bianca Soares", role: "Desenvolvedora", quote: "Usando a tecnologia para impactar vidas" },
-                        { name: "Dandara Medeiros", role: "Desenvolvedora", quote: "Alimentação é o primeiro passo para o bem-estar" },
-                        { name: "Gabriel Jonatas", role: "Desenvolvedor", quote: "A tecnologia a serviço da sua saúde" },
-                        { name: "Keven Martinelli", role: "Desenvolvedor & Designer UX", quote: "Experiências que transformam hábitos" },
-                        { name: "Matheus Torres", role: "Desenvolvedor", quote: "Conectando pessoas a alimentos saudáveis" }
+                        { name: "Bianca Soares", role: "Desenvolvedora", quote: "Usando a tecnologia para impactar vidas", image: bianca },
+                        { name: "Dandara Medeiros", role: "Desenvolvedora", quote: "Alimentação é o primeiro passo para o bem-estar", image: dandara },
+                        { name: "Gabriel Jonatas", role: "Desenvolvedor", quote: "A tecnologia a serviço da sua saúde", image: gabriel },
+                        { name: "Keven Martineli", role: "Desenvolvedor & Designer UX", quote: "Experiências que transformam hábitos", image: keven },
+                        { name: "Matheus Torres", role: "Desenvolvedor", quote: "Conectando pessoas a alimentos saudáveis", image: matheus }
                     ].map((member, index) => (
                         <div key={index} className="bg-white rounded-xl shadow-md overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-xl group">
                             <div className="bg-gradient-to-r from-red-600 to-red-700 h-2"></div>
                             <div className="p-6 text-center">
                                 <div className="relative mb-2">
-                                    <div className="absolute inset-0 bg-gradient-to-r from-red-500 to-red-600 rounded-full opacity-0 group-hover:opacity-70 transition-opacity duration-300"></div>
-                                    <img src={Yfooder} className="rounded-full w-28 h-28 mx-auto border-4 border-white shadow-md object-cover" alt={member.name} />
+                                    <div className="absolute inset-0 bg-gradient-to-r rounded-full opacity-0 group-hover:opacity-70 transition-opacity duration-300"></div>
+                                    <img src={member.image} className="rounded-full w-28 h-28 mx-auto border-4 border-white shadow-md object-cover" alt={member.name} />
                                 </div>
                                 <h4 className="font-bold text-xl mt-4 text-gray-800">{member.name}</h4>
                                 <p className="text-red-600 font-medium text-sm mb-2">{member.role}</p>
@@ -203,23 +209,7 @@ function Sobre() {
                     ))}
                 </div>
             </div>
-
-            {/* Footer CTA */}
-            <div className="bg-gradient-to-r from-red-600 to-red-800 rounded-xl p-8 text-center text-white shadow-xl relative overflow-hidden">
-                <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB4PSIwIiB5PSIwIiB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxjaXJjbGUgY3g9IjEwIiBjeT0iMTAiIHI9IjEuNSIgZmlsbD0iI2ZmZiIgZmlsbC1vcGFjaXR5PSIwLjEiLz48L3BhdHRlcm4+PC9kZWZzPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjcGF0dGVybikiLz48L3N2Zz4=')] opacity-30"></div>
-                <div className="relative">
-                    <h3 className="text-2xl font-bold mb-3">Faça parte da revolução YourFood</h3>
-                    <p className="mb-6 text-white text-opacity-90 max-w-md mx-auto">Transforme sua relação com a alimentação e descubra um novo caminho para o bem-estar.</p>
-                    <button className="bg-white text-red-600 font-bold py-3 px-8 rounded-full shadow-lg hover:bg-red-50 transition-all transform hover:scale-105 hover:shadow-xl flex mx-auto items-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-                        </svg>
-                        Baixe o App
-                    </button>
-                    <div className="mt-4 text-white text-opacity-70 text-sm">Disponível para iOS e Android</div>
-                </div>
-            </div>
-        </div>
+        </div >
     );
 }
 
