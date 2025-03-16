@@ -3,10 +3,6 @@ import { FaHome, FaSearch, FaUser } from "react-icons/fa";
 
 const FooterLogado = () => {
   return (
-    <div className="flex flex-col min-h-screen">
-      <main className="flex-grow">
-        {/* Conteúdo da página */}
-      </main>
       <footer className="bg-white py-4 text-center shadow-lg mt-6">
         <div className="border-t border-gray-300 pt-4">
           <div className="flex justify-center space-x-20 mb-2 flex-wrap">
@@ -34,7 +30,6 @@ const FooterLogado = () => {
           </p>
         </div>
       </footer>
-    </div>
   );
 };
 

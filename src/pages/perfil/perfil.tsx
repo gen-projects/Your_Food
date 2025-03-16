@@ -11,7 +11,7 @@ function Perfil() {
   useEffect(() => {
     if (usuario.token === "") {
       ToastAlert("Você precisa estar logado", "erro");
-      navigate("/");
+      navigate("/login");
     }
   }, [usuario.token, navigate]);
 
