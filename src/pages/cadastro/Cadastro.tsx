@@ -14,7 +14,7 @@ function Cadastro() {
     const [isLoading, setIsLoading] = useState<boolean>(false)
     const [categorias, setCategorias] = useState<Categoria[]>([])
 
-    const [categoria, setCategoria] = useState<Categoria>({ id: 0, descricao: '', saudavel: false })
+    const [categoria, setCategoria] = useState<Categoria>({ id: 0, descricao: '', saudavel: false, foto: '' })
     const [produto, setProduto] = useState<Produto>({} as Produto)
 
     const { id } = useParams<{ id: string }>()
