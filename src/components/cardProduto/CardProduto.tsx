@@ -10,7 +10,7 @@ interface CardProdutoProps{
 
 function CardProduto({nome, descricao,preco,url}: CardProdutoProps) {
     return (
-        <div className="flex flex-col border bg-white border-gray-100 rounded-md text-start p-3 w-50 h-68 gap-2 items-center shadow-md">
+        <div className="flex flex-col border bg-white border-gray-100 rounded-md text-start p-3 w-50 h-78 gap-2 items-center shadow-md">
             <div className="flex items-center justify-center w-40 h-36 rounded-lg inset-shadow-sm inset-shadow-gray-500">
                 <img src={url} alt="imagem produto" className="object-contain w-full h-full"/>
             </div>
