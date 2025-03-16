@@ -1,8 +1,4 @@
-import IconeRedondo from "../../components/iconeredondo/IconeRedondo";
-import Subtitulo from "../../components/subtitulo/Subtitulo";
-import Texto from "../../components/texto/Texto";
 import Logo from "../../assets/images/icon_vermelho_bg_branco.png";
-import Yfooder from "../../assets/images/17004.png";
 import bianca from "../../assets/images/bianca.jpeg";
 import dandara from "../../assets/images/dandara.jpeg";
 import gabriel from "../../assets/images/gabriel.jpeg";
@@ -186,28 +182,37 @@ function Sobre() {
                     <p className="text-gray-600 mt-4 text-lg">A equipe apaixonada por trás do YourFood</p>
                 </div>
 
-                <div className="grid grid-cols-2 md:grid-cols-3 gap-6"> 
+                <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
                     {[
-                        { name: "Bianca Soares", role: "Desenvolvedora", quote: "Usando a tecnologia para impactar vidas", image: bianca },
-                        { name: "Dandara Medeiros", role: "Desenvolvedora", quote: "Alimentação é o primeiro passo para o bem-estar", image: dandara },
-                        { name: "Gabriel Jonatas", role: "Desenvolvedor", quote: "A tecnologia a serviço da sua saúde", image: gabriel },
-                        { name: "Keven Martineli", role: "Desenvolvedor & Designer UX", quote: "Experiências que transformam hábitos", image: keven },
-                        { name: "Matheus Torres", role: "Desenvolvedor", quote: "Conectando pessoas a alimentos saudáveis", image: matheus }
+                        { name: "Bianca Soares", role: "Desenvolvedora", quote: "Usando a tecnologia para impactar vidas", image: bianca, linkedin: "https://www.linkedin.com/in/biancasuarz/" },
+                        { name: "Dandara Medeiros", role: "Desenvolvedora", quote: "Alimentação é o primeiro passo para o bem-estar", image: dandara, linkedin: "https://www.linkedin.com/in/dandaramedeiros/" },
+                        { name: "Gabriel Jonatas", role: "Desenvolvedor", quote: "A tecnologia a serviço da sua saúde", image: gabriel, linkedin: "https://www.linkedin.com/in/gabrieljonatas/" },
+                        { name: "Keven Martineli", role: "Desenvolvedor & Designer UX", quote: "Experiências que transformam hábitos", image: keven, linkedin: "https://www.linkedin.com/in/keven-martineli/" },
+                        { name: "Matheus Torres", role: "Desenvolvedor", quote: "Conectando pessoas a alimentos saudáveis", image: matheus, linkedin: "https://www.linkedin.com/in/omatheustorres/" }
                     ].map((member, index) => (
-                        <div key={index} className="bg-white rounded-xl shadow-md overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-xl group">
-                            <div className="bg-gradient-to-r from-red-600 to-red-700 h-2"></div>
-                            <div className="p-6 text-center">
-                                <div className="relative mb-2">
-                                    <div className="absolute inset-0 bg-gradient-to-r rounded-full opacity-0 group-hover:opacity-70 transition-opacity duration-300"></div>
-                                    <img src={member.image} className="rounded-full w-28 h-28 mx-auto border-4 border-white shadow-md object-cover" alt={member.name} />
+                        <a
+                            key={index}
+                            href={member.linkedin}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="block"
+                        >
+                            <div className="bg-white rounded-xl shadow-md overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-xl group">
+                                <div className="bg-gradient-to-r from-red-600 to-red-700 h-2"></div>
+                                <div className="p-6 text-center">
+                                    <div className="relative mb-2">
+                                        <div className="absolute inset-0 bg-gradient-to-r rounded-full opacity-0 group-hover:opacity-70 transition-opacity duration-300"></div>
+                                        <img src={member.image} className="rounded-full w-28 h-28 mx-auto border-4 border-white shadow-md object-cover" alt={member.name} />
+                                    </div>
+                                    <h4 className="font-bold text-xl mt-4 text-gray-800">{member.name}</h4>
+                                    <p className="text-red-600 font-medium text-sm mb-2">{member.role}</p>
+                                    <p className="text-gray-500 text-sm italic opacity-0 group-hover:opacity-100 transition-opacity duration-300 mt-2">"{member.quote}"</p>
                                 </div>
-                                <h4 className="font-bold text-xl mt-4 text-gray-800">{member.name}</h4>
-                                <p className="text-red-600 font-medium text-sm mb-2">{member.role}</p>
-                                <p className="text-gray-500 text-sm italic opacity-0 group-hover:opacity-100 transition-opacity duration-300 mt-2">"{member.quote}"</p>
                             </div>
-                        </div>
+                        </a>
                     ))}
                 </div>
+
             </div>
         </div >
     );
