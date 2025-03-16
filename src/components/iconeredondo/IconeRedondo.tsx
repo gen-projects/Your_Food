@@ -2,7 +2,7 @@ interface iconeProps {
     bgCor?: string;
     alt?:string;
     link: string;
-    nome: string;
+    nome?: string;
 }
 
 function IconeRedondo(props: iconeProps) {
@@ -10,7 +10,7 @@ function IconeRedondo(props: iconeProps) {
         <>
         <div className="flex flex-col justify-center items-center">
             <div className="flex flex-col w-full items-center">
-                <div className={`${props.bgCor} w-26 h-26 rounded-full`}>
+                <div className={`${props.bgCor} w-26 h-26 rounded-full overflow-hidden`}>
                     <img 
                         src={`${props.link}`} 
                         className="w-full h-full object-contain" 

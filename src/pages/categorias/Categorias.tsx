@@ -4,7 +4,7 @@ import BarraDePesquisa from '../../components/barradepesquisa/BarraDePesquisa'
 import CardCategoria from '../../components/cardCategoria/CardCategoria'
 import Categoria from '../../models/Categoria'
 import { AuthContext } from '../../contexts/AuthContext'
-import { buscar } from '../../services/service'
+import { buscar, deletar } from '../../services/service'
 import { useNavigate } from 'react-router-dom'
 
 function Categorias() {
@@ -12,9 +12,7 @@ function Categorias() {
     const [categorias, setCategorias] = useState<Categoria[]>([])
 
     const { usuario, handleLogout } = useContext(AuthContext)
-    // const token = usuario.token
-
-    const [token, setToken] = useState('Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyb290QHJvb3QuY29tIiwiaWF0IjoxNzM4NjI0NTM3LCJleHAiOjE3Mzg2MjgxMzd9.SeZNooRZawtVy1VdB9QAM6inNMrf_Ymx0MyKTMaNYsI')
+    const token = usuario.token
 
     async function buscarCategorias() {
         try {
@@ -25,6 +23,17 @@ function Categorias() {
             if (error.toString().includes('403')) {
                 handleLogout()
             }
+        }
+    }
+
+    async function deletarCategoria(id:string) {
+        try {
+            await deletar(`/categorias/${id}`, { headers: { Authorization: token } });
+            setCategorias(prev => prev.filter(cat => String(cat.id) !== id)); // Atualiza a lista sem recarregar
+            alert('Categoria deletada com sucesso!');
+        } catch (error) {
+            console.error(error);
+            alert('Erro ao deletar a categoria.');
         }
     }
 
@@ -62,6 +71,7 @@ function Categorias() {
                                 key={categoria.id}
                                 categoria={categoria}
                                 url="https://i.imgur.com/vvfBypS.png"
+                                onDelete={deletarCategoria}
                             />
                         )
                     })}
