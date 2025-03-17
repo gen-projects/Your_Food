@@ -79,7 +79,6 @@ function Categorias() {
                             <CardListaCategoria 
                                 key={categoria.id}
                                 categoria={categoria}
-                                url={categoria.foto}
                                 onDelete={deletarCategoria}
                                 onEdit={editarCategoria}
                             />

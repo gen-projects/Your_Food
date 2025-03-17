@@ -1,106 +1,117 @@
-import { ChangeEvent, useContext, useEffect, useState } from 'react';
-import BotaoVermelho from '../../components/botao/BotaoVermelho';
+import React, { ChangeEvent, useContext, useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { atualizar, buscar, cadastrar } from '../../services/service';
+import Modal from '../../components/modal/Modal';
+import BotaoVermelho from '../../components/botao/BotaoVermelho';
 import Categoria from '../../models/Categoria';
+import { atualizar, buscar, cadastrar } from '../../services/service';
 import { AuthContext } from '../../contexts/AuthContext';
 
-function CadastroCategorias() {
-
+function CadastroCategoria() {
     const navigate = useNavigate();
+    const { id } = useParams<{ id: string }>();
 
-    const [isLoading, setIsLoading] = useState<boolean>(false)
     const [categoria, setCategoria] = useState<Categoria>({
         id: 0,
         descricao: '',
-        saudavel: false,
-        foto: ''
-    })
+        foto: '',
+        saudavel: false
+    });
 
-    const { id } = useParams<{ id: string }>()
-    const { usuario, handleLogout } = useContext(AuthContext)
-    const token = usuario.token
+    const [isLoading, setIsLoading] = useState(false);
 
-    async function buscarCategoriaPorId(id: string) {
-        try {
-            await buscar(`/categorias/${id}`, setCategoria, {
-                headers: { Authorization: token }
-            })
-        } catch (error: any) {
-            if (error.toString().includes('403')) {
-                handleLogout()
-            }
-        }
-    }
+    const { usuario, handleLogout } = useContext(AuthContext);
+    const token = usuario.token;
 
     useEffect(() => {
         if (token === '') {
             alert('Você precisa estar logado');
             navigate('/');
         }
-    }, [token])
+    }, [token]);
 
-    useEffect(() => {
-        if (id !== undefined) {
-            buscarCategoriaPorId(id)
-        }
-    }, [id])
-
-
-    function atualizarEstado(e: ChangeEvent<HTMLInputElement>) {
-        if (e.target.type === 'checkbox') {
-            setCategoria({
-                ...categoria,
-                [e.target.name]: e.target.checked
+    async function buscarCategoriaPorId(id: string) {
+        try {
+            await buscar(`/categorias/${id}`, setCategoria, {
+                headers: { Authorization: token }
             });
-        } else {
-            setCategoria({
-                ...categoria,
-                [e.target.name]: e.target.value
-            });
+        } catch (error: any) {
+            if (error.toString().includes('403')) {
+                handleLogout();
+            } else {
+                console.error("Erro ao buscar categoria:", error);
+                alert('Erro ao buscar categoria');
+            }
         }
     }
 
+    useEffect(() => {
+        if (id !== undefined) {
+            buscarCategoriaPorId(id);
+        }
+    }, [id]);
+
+    function atualizarEstado(e: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLSelectElement>) {
+        const { name, value } = e.target;
+        setCategoria({
+            ...categoria,
+            [name]: name === 'saudavel' ? value === 'true' : value
+        });
+    }
+
     async function gerarNovaCategoria(e: ChangeEvent<HTMLFormElement>) {
-        e.preventDefault()
-        setIsLoading(true)
-    
+        e.preventDefault();
+        setIsLoading(true);
+
+        // Validando dados antes de enviar
+        if (!categoria.descricao || !categoria.foto) {
+            alert("Todos os campos são obrigatórios.");
+            setIsLoading(false);
+            return;
+        }
+
+        // Preparando a categoria para enviar, removendo campos desnecessários
+        const categoriaParaEnviar = {
+            descricao: categoria.descricao,
+            foto: categoria.foto,
+            saudavel: categoria.saudavel
+        };
+
         if (id !== undefined) {
             try {
-                await atualizar(`/categorias`, categoria, setCategoria, {
+                await atualizar(`/categorias/${id}`, categoriaParaEnviar, setCategoria, {
                     headers: {
                         Authorization: token,
                     },
                 });
-                navigate("/categorias")
-                alert('Categoria atualizada com sucesso')
+                alert('Categoria atualizada com sucesso');
+                navigate('/categorias'); // Redireciona após sucesso
             } catch (error: any) {
                 if (error.toString().includes('403')) {
-                    handleLogout()
+                    handleLogout();
                 } else {
-                    alert('Erro ao atualizar a Categoria')
+                    console.error("Erro ao atualizar categoria:", error);
+                    alert('Erro ao processar a categoria');
                 }
             }
         } else {
             try {
-                await cadastrar(`/categorias`, categoria, setCategoria, {
-                    headers: {
-                        Authorization: token,
-                    },
-                })
+                await cadastrar(`/categorias`, categoriaParaEnviar, setCategoria, {
+                    headers: { Authorization: token }
+                });
                 alert('Categoria cadastrada com sucesso');
+                navigate('/categorias'); // Redireciona após sucesso
             } catch (error: any) {
                 if (error.toString().includes('403')) {
-                    handleLogout()
+                    handleLogout();
                 } else {
-                    alert('Erro ao cadastrar a Categoria');
+                    console.error("Erro ao cadastrar categoria:", error);
+                    alert('Erro ao cadastrar a categoria');
                 }
             }
         }
-        navigate('/categorias')
-        setIsLoading(false)
+        setIsLoading(false);
     }
-    
+
     return (
         <div className="flex items-center justify-center min-h-screen bg-gray-100">
             <div className="bg-white p-6 rounded-lg shadow-md w-96">
@@ -108,44 +119,46 @@ function CadastroCategorias() {
                     <h1 className="text-2xl font-bold text-center mb-4 font-oswald">
                         {id ? 'ATUALIZAR CATEGORIA' : 'CADASTRAR CATEGORIA'}
                     </h1>
-    
-                    <h2 className="text-lg font-semibold mb-2 text-[#B32B3B]">Descrição *</h2>
+
+                    <label className="text-lg font-semibold mb-2 text-[#B32B3B]">Descrição *</label>
                     <input
                         type="text"
-                        id="descricao"
                         name="descricao"
-                        placeholder="Descrição da categoria:"
+                        placeholder="Descrição da categoria"
                         value={categoria.descricao}
                         onChange={atualizarEstado}
                         className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 mb-4"
+                        required
                     />
-    
-                    <h2 className="text-lg font-semibold mb-2 text-[#B32B3B]">É saudável? *</h2>
-                    <input
-                        type="checkbox"
-                        id="saudavel"
-                        name="saudavel"
-                        checked={categoria.saudavel}
-                        onChange={atualizarEstado}
-                        className="mb-4 ml-2"
-                    />
-    
-                    <h2 className="text-lg font-semibold mb-2 text-[#B32B3B]">Foto *</h2>
+
+                    <label className="text-lg font-semibold mb-2 text-[#B32B3B]">Foto *</label>
                     <input
                         type="text"
-                        id="foto"
                         name="foto"
-                        placeholder="URL da foto"
+                        placeholder="Link da foto"
                         value={categoria.foto}
                         onChange={atualizarEstado}
                         className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 mb-4"
+                        required
                     />
-    
-                    <BotaoVermelho texto={id ? "Atualizar Categoria" : "Cadastrar Categoria"} />
+
+                    <label className="text-lg font-semibold mb-2 text-[#B32B3B]">Saudável *</label>
+                    <select
+                        name="saudavel"
+                        value={categoria.saudavel ? 'true' : 'false'}
+                        onChange={atualizarEstado}
+                        className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 mb-4"
+                        required
+                    >
+                        <option value="true">Sim</option>
+                        <option value="false">Não</option>
+                    </select>
+
+                    <BotaoVermelho texto={id ? 'Atualizar Categoria' : 'Cadastrar Categoria'} />
                 </form>
             </div>
         </div>
     );
-};
+}
 
-export default CadastroCategorias;
+export default CadastroCategoria;
