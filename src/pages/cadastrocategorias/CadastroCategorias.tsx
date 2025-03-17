@@ -17,6 +17,7 @@ function CadastroCategoria() {
         saudavel: false
     });
 
+    
     const [isLoading, setIsLoading] = useState(false);
 
     const { usuario, handleLogout } = useContext(AuthContext);
