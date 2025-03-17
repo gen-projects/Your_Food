@@ -17,7 +17,6 @@ import Login from "./pages/login/Login";
 
 import Produtos from "./pages/produtos/Produtos";
 import Sobre from "./pages/sobre/Sobre";
-import FormCategoria from "./components/categoria/formcategoria/FormCategoria";
 import CadastroCategorias from "./pages/cadastrocategorias/CadastroCategorias";
 
 

@@ -3,5 +3,4 @@ export default interface Categoria {
     foto: string;
     descricao: string;
     saudavel: boolean;
-    foto: string;
 }
