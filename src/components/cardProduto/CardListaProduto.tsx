@@ -13,7 +13,7 @@ function CardListaProduto({produto,onDelete, onEdit}: CardListaProdutoProps) {
     return (
     <div className="flex flex-row border border-gray-400 rounded-md text-start p-3 w-full h-50 gap-2 items-center shadow-md">
         <div className="flex items-center justify-center w-46 h-36 mr-2 rounded-lg inset-shadow-sm inset-shadow-gray-500">
-            <img src="https://i.imgur.com/vvfBypS.png" alt="imagem produto" className="object-contain w-full h-full
+            <img src={produto.foto} alt="imagem produto" className="object-contain w-full h-full
                         hover:scale-110 transition-transform duration-300"/>
         </div>
         <div className="text-left w-full">

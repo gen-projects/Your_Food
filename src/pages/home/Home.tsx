@@ -13,20 +13,20 @@ import Login from "../login/Login"
 
 function Home() {
 
-    // const [ produtos, setProdutos ] = useState<Produto[]>([])
+    const [ produtos, setProdutos ] = useState<Produto[]>([])
 
-    // async function recomendacao() {
-    //     try{
-    //         await recomendacaoSaudavel('/recomendacoes',setProdutos)
-    //     }catch(error:any){
-    //         console.log("Erro ao buscar recomendações")
-    //     }
+    async function recomendacao() {
+        try{
+            await recomendacaoSaudavel('/produtos/recomendacoes',setProdutos)
+        }catch(error:any){
+            console.log("Erro ao buscar recomendações")
+        }
 
-    // }
+    }
 
-    // useEffect(() =>{
-    //     recomendacao()
-    // },[])
+    useEffect(() =>{
+        recomendacao()
+    },[])
 
     return (
         <div className=" flex flex-col max-h-full">
@@ -59,13 +59,13 @@ function Home() {
 
                 <div className="flex flex-row gap-4 ml-4 w-full py-8 overflow-x-auto justify-start md:justify-center">
                     <IconeRedondo
-                        link="https://i.imgur.com/vvfBypS.png" bgCor="bg-green-500" nome="Saudáveis" />
+                        link="https://i.imgur.com/EmYFVh1.png" bgCor="bg-green-500" nome="Saudáveis" />
                     <IconeRedondo
                         link="https://i.imgur.com/vvfBypS.png" bgCor="bg-amber-500" nome="Sucos" />
                     <IconeRedondo
-                        link="https://i.imgur.com/vvfBypS.png" bgCor="bg-blue-500" nome="Vegano" />
+                        link="https://i.imgur.com/ZKzZfyU.png" bgCor="bg-blue-500" nome="Vegano" />
                     <IconeRedondo
-                        link="https://i.imgur.com/vvfBypS.png" bgCor="bg-red-500" nome="Hamburgúer" />
+                        link="https://i.imgur.com/MpmOH7u.png" bgCor="bg-red-500" nome="Hamburgúer" />
                 </div>
             </div>
 
@@ -85,22 +85,13 @@ function Home() {
                     
                 </div>
                 <div className="flex flex-row gap-2 pb-5 overflow-x-auto w-full justify-start md:justify-center ml-4">
-                    {/* Mocado enquanto não libera end-point no backend */}
-                    <CardProduto
-                        nome="Suco de Laranja"
-                        descricao="Suco natural, feito e colhido na hora"
-                        preco={10.99}
-                        url="https://i.imgur.com/vvfBypS.png" />
-                    <CardProduto
-                        nome="Suco de Laranja"
-                        descricao="Suco natural, feito e colhido na hora"
-                        preco={10.99}
-                        url="https://i.imgur.com/vvfBypS.png" />
-                    <CardProduto
-                        nome="Suco de Laranja"
-                        descricao="Suco natural, feito e colhido na hora"
-                        preco={10.99}
-                        url="https://i.imgur.com/vvfBypS.png" />
+                    {produtos.map((produto) => (
+                        <CardProduto
+                            nome={produto.nome}
+                            descricao={produto.descricao}
+                            preco={produto.preco/100}
+                            url={produto.foto}/>
+                    ))}
                 </div>
             </div>
 

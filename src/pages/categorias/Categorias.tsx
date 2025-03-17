@@ -70,7 +70,7 @@ function Categorias() {
                             <CardCategoria 
                                 key={categoria.id}
                                 categoria={categoria}
-                                url="https://i.imgur.com/vvfBypS.png"
+                                url={categoria.foto}
                                 onDelete={deletarCategoria}
                             />
                         )

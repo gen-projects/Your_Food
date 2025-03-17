@@ -14,7 +14,7 @@ function Cadastro() {
     const [isLoading, setIsLoading] = useState<boolean>(false)
     const [categorias, setCategorias] = useState<Categoria[]>([])
 
-    const [categoria, setCategoria] = useState<Categoria>({ id: 0, descricao: '', saudavel: false })
+    const [categoria, setCategoria] = useState<Categoria>({ id: 0, descricao: '', foto: '',saudavel: false })
     const [produto, setProduto] = useState<Produto>({} as Produto)
 
     const { id } = useParams<{ id: string }>()
@@ -162,6 +162,17 @@ function Cadastro() {
                         name="descricao"
                         placeholder="Descrição do produto:"
                         value={produto.descricao || ''}
+                        onChange={atualizarEstado}
+                        className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 mb-4"
+                    />
+
+                    <h2 className="text-lg font-semibold mb-2 text-[#B32B3B]">Foto Produto *</h2>
+                    <input
+                        type="text"
+                        id="foto"
+                        name="foto"
+                        placeholder="Descrição do produto:"
+                        value={produto.foto || ''}
                         onChange={atualizarEstado}
                         className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 mb-4"
                     />
