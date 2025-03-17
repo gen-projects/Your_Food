@@ -20,11 +20,11 @@ function CardCategoria({categoria, url, onDelete}: CardCategoriaProps) {
         <div className="flex flex-row m-1 rounded-2xl bg-[#FAF8F8] shadow-lg  max-w-2xl ">
             <div className="flex flex-row items-center p-4 ">
                 <div className="flex justify-center items-center rounded-full
-                    bg-green-500 h-32 min-w-32 min-h-28 overflow-hidden shadow-md">
+                    bg-green-500 h-26 w-26  overflow-hidden shadow-md">
                     <img
                         src={url}
                         alt="icon_categoria"
-                        className="w-full h-full object-contain hover:scale-105 "
+                        className="w-full h-full object-contain hover:scale-105"
                     />
                 </div>
 

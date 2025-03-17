@@ -91,7 +91,7 @@ function Produtos() {
                 {categorias.map((categoria) => (
                     <IconeRedondo
                         key={categoria.id}
-                        link="https://i.imgur.com/vvfBypS.png"
+                        link={categoria.foto}
                         bgCor="bg-green-300"
                         nome={categoria.descricao}
                     />
