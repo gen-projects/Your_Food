@@ -45,22 +45,21 @@ function Produtos() {
         }
     }
 
-        async function deletarProduto(id:string) {
-            try {
-                await deletar(`/produtos/${id}`, { headers: { Authorization: token } });
-                setProdutos(prev => prev.filter(cat => String(cat.id) !== id)); // Atualiza a lista sem recarregar
-                alert('Produto deletado com sucesso!');
-            } catch (error) {
-                console.error(error);
-                alert('Erro ao deletar o produto.');
-            }
+    async function deletarProduto(id:string) {
+        try {
+            await deletar(`/produtos/${id}`, { headers: { Authorization: token } });
+            setProdutos(prev => prev.filter(cat => String(cat.id) !== id)); // Atualiza a lista sem recarregar
+            alert('Produto deletado com sucesso!');
+        } catch (error) {
+            console.error(error);
+            alert('Erro ao deletar o produto.');
         }
-
-        function editarProduto(id: number) {
-            navigate(`/editarproduto/${id}`); // Redireciona para a rota de edição
-        }
+    }
+    
+    function editarProduto(id: number) {
+        navigate(`/editarproduto/${id}`); // Redireciona para a rota de edição
+    }
         
-
     useEffect(() => {
         if (token === '') {
             alert('Você precisa estar logado!')

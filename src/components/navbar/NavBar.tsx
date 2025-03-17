@@ -61,9 +61,7 @@ const Navbar: React.FC = () => {
                         <li className="text-gray-800 hover:text-red-500"><Link to={'/perfil'}>Perfil</Link></li>
                         <li className="text-gray-800 hover:text-red-500"><Link to={'/produtos'}>Produto</Link></li>
                         <li className="text-gray-800 hover:text-red-500"><Link to={'/categorias'}>Categoria</Link></li>
-                        <li className="text-gray-800 hover:text-red-500"><Link to={'/'}>Contato</Link></li>
                         <li className="text-gray-800 hover:text-red-500"><Link to={'/sobre'}>Sobre</Link></li>
-                        
                     </ul>
                 </nav>
             )}

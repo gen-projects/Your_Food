@@ -6,6 +6,7 @@ import Categoria from '../../models/Categoria'
 import { AuthContext } from '../../contexts/AuthContext'
 import { buscar, deletar } from '../../services/service'
 import { useNavigate } from 'react-router-dom'
+import CardListaCategoria from '../../components/cardCategoria/CardListaCategoria'
 
 function Categorias() {
     const navigate = useNavigate();
@@ -37,6 +38,10 @@ function Categorias() {
         }
     }
 
+    function editarCategoria(id: number) {
+        navigate(`/editarcategoria/${id}`); // Redireciona para a rota de edição
+    }
+
     useEffect(() => {
         if (token === '') {
             alert('Você precisa estar logado!')
@@ -52,13 +57,17 @@ function Categorias() {
         console.log("faz nada ainda")
     }
 
+    const handleAddClick = () => {
+        navigate("/cadastrarcategoria"); // Navega para a nova página
+    };
+
     return (
         <div className='flex flex-col items-center justify-center text-center'>
             <Titulo texto='CATEGORIAS' />
             <div className='pt-4 flex justify-center items-center w-full max-w-2xl'>
                 <BarraDePesquisa
                     searchValue=''
-                    onAddClick={nada}
+                    onAddClick={handleAddClick}
                     onSearchChange={nada}
                 />
             </div>
@@ -67,11 +76,11 @@ function Categorias() {
                 <div className='flex flex-col pt-4 gap-3'>
                     {categorias.map((categoria) =>{
                         return(
-                            <CardCategoria 
+                            <CardListaCategoria 
                                 key={categoria.id}
                                 categoria={categoria}
-                                url={categoria.foto}
                                 onDelete={deletarCategoria}
+                                onEdit={editarCategoria}
                             />
                         )
                     })}
