@@ -30,14 +30,16 @@ const Navbar: React.FC = () => {
     return (
         <header className="bg-white shadow-md p-4 relative">
             <div className="container mx-auto flex items-center justify-between">
-                {/* Logo */}
                 <div className="flex items-center">
+                    <Link to={"/"}>
                     <img
                         src={logo}
                         alt="Logo"
                         className="h-10 w-10 rounded-full mr-2"
                     />
+                    </Link>
                     <span className="text-lg font-bold text-gray-800">YourFood</span>
+                    
                 </div>
 
                 {/* Hamburger Menu Button */}

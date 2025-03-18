@@ -13,20 +13,20 @@ import Login from "../login/Login"
 
 function Home() {
 
-    const [ produtos, setProdutos ] = useState<Produto[]>([])
+    const [produtos, setProdutos] = useState<Produto[]>([])
 
     async function recomendacao() {
-        try{
-            await recomendacaoSaudavel('/produtos/recomendacoes',setProdutos)
-        }catch(error:any){
+        try {
+            await recomendacaoSaudavel('/produtos/recomendacoes', setProdutos)
+        } catch (error: any) {
             console.log("Erro ao buscar recomendações")
         }
 
     }
 
-    useEffect(() =>{
+    useEffect(() => {
         recomendacao()
-    },[])
+    }, [])
 
     return (
         <div className=" flex flex-col max-h-full">
@@ -58,14 +58,26 @@ function Home() {
                 </div>
 
                 <div className="flex flex-row gap-4 ml-4 w-full py-8 overflow-x-auto justify-start md:justify-center">
-                    <IconeRedondo
-                        link="https://i.imgur.com/EmYFVh1.png" bgCor="bg-green-500" nome="Saudáveis" />
-                    <IconeRedondo
-                        link="https://i.imgur.com/vvfBypS.png" bgCor="bg-amber-500" nome="Sucos" />
-                    <IconeRedondo
-                        link="https://i.imgur.com/ZKzZfyU.png" bgCor="bg-blue-500" nome="Vegano" />
-                    <IconeRedondo
-                        link="https://i.imgur.com/MpmOH7u.png" bgCor="bg-red-500" nome="Hamburgúer" />
+                    <Link to={"/categorias"}>
+                        <IconeRedondo
+                            link="https://i.imgur.com/EmYFVh1.png" bgCor="bg-green-500" nome="Saladas" />
+                    </Link>
+                    
+                    <Link to={"/categorias"}>
+                        <IconeRedondo
+                            link="https://i.imgur.com/vvfBypS.png" bgCor="bg-amber-500" nome="Sucos Naturais" />
+                    </Link>
+
+                    <Link to={"/categorias"}>
+                        <IconeRedondo
+                            link="https://i.imgur.com/ZKzZfyU.png" bgCor="bg-blue-500" nome="Vegano" />
+                    </Link>
+
+                    <Link to={"/categorias"}>
+                        <IconeRedondo
+                            link="https://i.imgur.com/MpmOH7u.png" bgCor="bg-red-500" nome="Hamburgúer" />
+                    </Link>
+
                 </div>
             </div>
 
@@ -82,15 +94,15 @@ function Home() {
                     <Link to={"/produtos"}>
                         <p className="text-white font-semibold underline cursor-pointer mb-6">Descubra produtos saudáveis</p>
                     </Link>
-                    
+
                 </div>
                 <div className="flex flex-row gap-2 pb-5 overflow-x-auto w-full justify-start md:justify-center ml-4">
                     {produtos.map((produto) => (
                         <CardProduto
                             nome={produto.nome}
                             descricao={produto.descricao}
-                            preco={produto.preco/100}
-                            url={produto.foto}/>
+                            preco={produto.preco / 100}
+                            url={produto.foto} />
                     ))}
                 </div>
             </div>
@@ -107,13 +119,18 @@ function Home() {
                 />
 
                 <Faq
-                    pergunta="Como ter meu produto recomendado na página inicial?"
-                    resposta="Nosso sistema de recomendação é aleatório, todos os produtos saudáveis podem ser recomendados."
+                    pergunta="Como é definido se um produto é saudavel?"
+                    resposta="A identificação de um produto como saudável está vinculada à categoria 
+                            em que ele foi registrado. Produtos cadastrados nas 
+                            categorias Naturais ou Saladas, por exemplo, já são automaticamente 
+                            classificados como saudáveis."
                 />
 
                 <Faq
-                    pergunta="Como ter meu produto recomendado na página inicial?"
-                    resposta="Nosso sistema de recomendação é aleatório, todos os produtos saudáveis podem ser recomendados."
+                    pergunta="Como adiciono a foto do meu produto?"
+                    resposta="Para adicionar a foto do seu produto, basta inserir o link da imagem no campo 
+                            Foto durante o cadastro. No momento, nosso sistema não aceita upload direto 
+                            de imagens, sendo necessário utilizar um link externo."
                 />
             </div>
         </div>

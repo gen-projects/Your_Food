@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import Titulo from '../../components/titulo/Titulo'
 import BarraDePesquisa from '../../components/barradepesquisa/BarraDePesquisa'
-import CardCategoria from '../../components/cardCategoria/CardCategoria'
 import Categoria from '../../models/Categoria'
 import { AuthContext } from '../../contexts/AuthContext'
 import { buscar, deletar } from '../../services/service'
@@ -11,6 +10,7 @@ import CardListaCategoria from '../../components/cardCategoria/CardListaCategori
 function Categorias() {
     const navigate = useNavigate();
     const [categorias, setCategorias] = useState<Categoria[]>([])
+    const [searchTerm, setSearchTerm] = useState<string>(''); // Estado para pesquisa
 
     const { usuario, handleLogout } = useContext(AuthContext)
     const token = usuario.token
@@ -27,7 +27,7 @@ function Categorias() {
         }
     }
 
-    async function deletarCategoria(id:string) {
+    async function deletarCategoria(id: string) {
         try {
             await deletar(`/categorias/${id}`, { headers: { Authorization: token } });
             setCategorias(prev => prev.filter(cat => String(cat.id) !== id)); // Atualiza a lista sem recarregar
@@ -53,8 +53,9 @@ function Categorias() {
         buscarCategorias()
     }, [categorias.length])
 
-    function nada() {
-        console.log("faz nada ainda")
+    // Função para atualizar o termo de pesquisa
+    function handleSearchChange(event: React.ChangeEvent<HTMLInputElement>) {
+        setSearchTerm(event.target.value);
     }
 
     const handleAddClick = () => {
@@ -66,24 +67,27 @@ function Categorias() {
             <Titulo texto='CATEGORIAS' />
             <div className='pt-4 flex justify-center items-center w-full max-w-2xl'>
                 <BarraDePesquisa
-                    searchValue=''
+                    searchValue={searchTerm}
                     onAddClick={handleAddClick}
-                    onSearchChange={nada}
+                    onSearchChange={handleSearchChange}
                 />
             </div>
 
             <div className='flex flex-col text-start items-center justify-center'>
                 <div className='flex flex-col pt-4 gap-3'>
-                    {categorias.map((categoria) =>{
-                        return(
+                    {categorias
+                        .filter(categoria =>
+                            categoria.descricao.toLowerCase().includes(searchTerm.toLowerCase()) // Filtro de pesquisa por nome da categoria
+                        )
+                        .map((categoria) => (
                             <CardListaCategoria 
                                 key={categoria.id}
                                 categoria={categoria}
                                 onDelete={deletarCategoria}
                                 onEdit={editarCategoria}
                             />
-                        )
-                    })}
+                        ))
+                    }
                 </div>
             </div>
         </div>

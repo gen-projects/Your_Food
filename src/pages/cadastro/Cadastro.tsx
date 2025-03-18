@@ -117,7 +117,7 @@ function Cadastro() {
                         Authorization: token,
                     },
                 })
-
+                navigate("/produtos")
                 alert('Produto cadastrado com sucesso');
 
             } catch (error: any) {
@@ -125,6 +125,7 @@ function Cadastro() {
                     handleLogout()
                 } else {
                     console.log(produto); // Verifique a estrutura do objeto antes de enviar
+                    navigate("/produtos")
                     alert('Erro ao cadastrar o Produto');
                 }
             }

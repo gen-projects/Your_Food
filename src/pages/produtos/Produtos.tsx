@@ -9,20 +9,19 @@ import { useNavigate } from 'react-router-dom'
 import IconeRedondo from '../../components/iconeredondo/IconeRedondo'
 import Produto from '../../models/Produto'
 import CardListaProduto from '../../components/cardProduto/CardListaProduto'
-import Cadastro from '../cadastro/Cadastro'
 
 function Produtos() {
     const navigate = useNavigate();
     const [categorias, setCategorias] = useState<Categoria[]>([])
     const [produtos, setProdutos] = useState<Produto[]>([])
-
-    const [mostrarCadastro, setMostrarCadastro] = useState(false);//usado para barra de pesquisa
+    const [categoriaSelecionada, setCategoriaSelecionada] = useState<number | null>(null);
+    const [searchTerm, setSearchTerm] = useState<string>(''); // Estado para pesquisa
 
     const { usuario, handleLogout } = useContext(AuthContext)
     const token = usuario.token
 
     async function buscarProdutos() {
-        try{
+        try {
             await buscar('/produtos', setProdutos, {
                 headers: { Authorization: token }
             })
@@ -45,21 +44,21 @@ function Produtos() {
         }
     }
 
-    async function deletarProduto(id:string) {
+    async function deletarProduto(id: string) {
         try {
             await deletar(`/produtos/${id}`, { headers: { Authorization: token } });
-            setProdutos(prev => prev.filter(cat => String(cat.id) !== id)); // Atualiza a lista sem recarregar
+            setProdutos(prev => prev.filter(cat => String(cat.id) !== id));
             alert('Produto deletado com sucesso!');
         } catch (error) {
             console.error(error);
             alert('Erro ao deletar o produto.');
         }
     }
-    
+
     function editarProduto(id: number) {
-        navigate(`/editarproduto/${id}`); // Redireciona para a rota de edição
+        navigate(`/editarproduto/${id}`);
     }
-        
+
     useEffect(() => {
         if (token === '') {
             alert('Você precisa estar logado!')
@@ -75,55 +74,71 @@ function Produtos() {
         buscarProdutos()
     }, [produtos.length])
 
-    function nada() {
-        console.log("faz nada ainda")
+    const handleAddClick = () => {
+        navigate("/cadastrarproduto");
+    };
+
+    function filtrarPorCategoria(idCategoria: number) {
+        if (categoriaSelecionada === idCategoria) {
+            setCategoriaSelecionada(null);
+        } else {
+            setCategoriaSelecionada(idCategoria);
+        }
     }
 
-    const handleAddClick = () => {
-        navigate("/cadastrarproduto"); // Navega para a nova página
-    };
+    // Função para atualizar o termo de pesquisa
+    function handleSearchChange(event: React.ChangeEvent<HTMLInputElement>) {
+        setSearchTerm(event.target.value);
+    }
 
     return (
         <div className="flex flex-col items-center justify-center text-center">
             <Titulo texto="CATEGORIAS" />
-    
-            <div className="flex flex-row gap-4 pt-4 flex-wrap justify-center">
+
+            <div className="flex flex-row gap-4 ml-4 w-full py-8 overflow-x-auto justify-start md:justify-center">
                 {categorias.map((categoria) => (
                     <IconeRedondo
                         key={categoria.id}
                         link={categoria.foto}
                         bgCor="bg-green-300"
                         nome={categoria.descricao}
+                        onClick={() => filtrarPorCategoria(categoria.id)}
                     />
                 ))}
             </div>
+
             <div className='pt-8'>
                 <Titulo texto="PRODUTOS" />
             </div>
-    
+
             <div className="pt-2 flex justify-center items-center w-full max-w-2xl">
                 <BarraDePesquisa
-                    searchValue=""
+                    searchValue={searchTerm}
                     onAddClick={handleAddClick}
-                    onSearchChange={nada}
+                    onSearchChange={handleSearchChange}
                 />
             </div>
 
             <div className="flex flex-col items-center justify-center pt-6 w-full max-w-3xl">
                 <div className="flex flex-col gap-4 w-full">
-                    {produtos.map((produto) => (
-                        <CardListaProduto 
-                            key={produto.id}
-                            produto={produto}
-                            onDelete={deletarProduto}
-                            onEdit={editarProduto}
-                        />
-                    ))}
+                    {produtos
+                        .filter(produto =>
+                            (categoriaSelecionada === null || produto.categoria?.id === categoriaSelecionada) &&
+                            produto.nome.toLowerCase().includes(searchTerm.toLowerCase()) // Filtro por nome
+                        )
+                        .map((produto) => (
+                            <CardListaProduto
+                                key={produto.id}
+                                produto={produto}
+                                onDelete={deletarProduto}
+                                onEdit={editarProduto}
+                            />
+                        ))
+                    }
                 </div>
             </div>
         </div>
     );
-    
 }
 
 export default Produtos
