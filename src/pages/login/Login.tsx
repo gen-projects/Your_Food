@@ -3,8 +3,6 @@ import { AuthContext } from '../../contexts/AuthContext';
 import { ChangeEvent, useContext, useEffect, useState } from 'react';
 import UsuarioLogin from '../../models/UsuarioLogin';
 import { RotatingLines } from 'react-loader-spinner';
-import IconeRedondo from '../../components/iconeredondo/IconeRedondo';
-import Icone from '../../assets/images/icon_branco_bg_vermelho.png';
 
 function Login() {
     const navigate = useNavigate();
@@ -31,71 +29,78 @@ function Login() {
     }
 
     return (
-        <div className="grid grid-cols-1 lg:grid-cols-2 place-items-center font-bold">
-            <form
-                className="flex justify-center items-center flex-col w-1/2 gap-4"
-                onSubmit={login}
-            >
-                <div className='rounded-full overflow-hidden max-h-20 max-w-20'>
-                    <img src="https://i.imgur.com/fXcN7Lu.png" alt="" />
-                </div>
-                <h2 className="text-slate-900 text-5xl">Entrar</h2>
+        <div className="h-[50dvh] flex flex-col-reverse lg:flex-row items-center 
+                        justify-center lg:justify-between min-h-screen">
 
-                <div className="flex flex-col w-full">
-                    <label htmlFor="usuario">Usuário</label>
-                    <input
-                        type="text"
-                        id="usuario"
-                        name="usuario"
-                        placeholder="Usuário"
-                        className="border-2 border-slate-700 rounded p-2"
-                        value={usuarioLogin.usuario}
-                        onChange={atualizarEstado}
-                    />
-                </div>
-
-                <div className="flex flex-col w-full">
-                    <label htmlFor="senha">Senha</label>
-                    <input
-                        type="password"
-                        id="senha"
-                        name="senha"
-                        placeholder="Senha"
-                        className="border-2 border-slate-700 rounded p-2"
-                        value={usuarioLogin.senha}
-                        onChange={atualizarEstado}
-                    />
-                </div>
-
-                <button
-                    type="submit"
-                    className="rounded bg-indigo-400 flex justify-center 
-                            hover:bg-indigo-900 text-white w-1/2 py-2"
+            <div className=' w-full lg:w-1/2 flex justify-center items-start 
+                            sm:items-center pb-50'>
+                
+                <form
+                    className="p-5 sm:p-5 flex justify-center items-center flex-col 
+                    w-[95vw] sm:w-2/5 gap-4"
+                    onSubmit={login}
                 >
-                    {isLoading ? (
-                        <RotatingLines
-                            strokeColor="white"
-                            strokeWidth="5"
-                            animationDuration="0.75"
-                            width="24"
-                            visible={true}
+                    <div className='rounded-full overflow-hidden max-h-20 max-w-20'>
+                        <img src="https://i.imgur.com/fXcN7Lu.png" alt="" />
+                    </div>
+                    <h2 className="text-slate-900 text-5xl">Entrar</h2>
+
+                    <div className="flex flex-col w-full">
+                        <label htmlFor="usuario">Usuário</label>
+                        <input
+                            type="text"
+                            id="usuario"
+                            name="usuario"
+                            placeholder="Usuário"
+                            className="border-2 border-slate-700 rounded p-2"
+                            value={usuarioLogin.usuario}
+                            onChange={atualizarEstado}
                         />
-                    ) : (
-                        <span>Entrar</span>
-                    )}
-                </button>
+                    </div>
 
-                <hr className="border-slate-800 w-full" />
+                    <div className="flex flex-col w-full">
+                        <label htmlFor="senha">Senha</label>
+                        <input
+                            type="password"
+                            id="senha"
+                            name="senha"
+                            placeholder="Senha"
+                            className="border-2 border-slate-700 rounded p-2"
+                            value={usuarioLogin.senha}
+                            onChange={atualizarEstado}
+                        />
+                    </div>
 
-                <p>
-                    Ainda não tem uma conta?{' '}
-                    <Link to="/cadastro" className="text-indigo-800 hover:underline">
-                        Cadastre-se
-                    </Link>
-                </p>
-            </form>
+                    <button
+                        type="submit"
+                        className="rounded bg-red-700 sm:bg-red-500 flex justify-center 
+                                sm:hover:bg-red-900 text-white w-1/2 py-2 cursor-pointer"
+                    >
+                        {isLoading ? (
+                            <RotatingLines
+                                strokeColor="white"
+                                strokeWidth="5"
+                                animationDuration="0.75"
+                                width="24"
+                                visible={true}
+                            />
+                        ) : (
+                            <span>Entrar</span>
+                        )}
+                    </button>
 
-            <div className='hidden lg:block w-full h-138'>
+                    <hr className="border-slate-800 w-full" />
+
+                    <p>
+                        Ainda não tem uma conta?{' '}
+                        <Link to="/cadastro" className="text-indigo-800 hover:underline">
+                            Cadastre-se
+                        </Link>
+                    </p>
+                </form>
+            </div>
+
+            <div className='hidden lg:block w-[50vw] h-full'>
                 <img 
                     src="https://i.imgur.com/HRB0N65.png" 
                     alt="Imagem ilustrativa de alimentos"

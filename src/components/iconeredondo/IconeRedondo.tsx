@@ -21,7 +21,7 @@ function IconeRedondo(props: iconeProps) {
                             alt={`${props.alt}`}
                         />
                     </div>
-                    <p>{props.nome}</p>
+                    <p className="line-clamp-1">{props.nome}</p>
                 </div>
             </div>
         </>

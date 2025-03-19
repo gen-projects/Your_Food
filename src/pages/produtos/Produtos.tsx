@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import Titulo from '../../components/titulo/Titulo'
 import BarraDePesquisa from '../../components/barradepesquisa/BarraDePesquisa'
-import CardCategoria from '../../components/cardCategoria/CardCategoria'
 import Categoria from '../../models/Categoria'
 import { AuthContext } from '../../contexts/AuthContext'
 import { buscar, deletar } from '../../services/service'
@@ -92,10 +91,11 @@ function Produtos() {
     }
 
     return (
-        <div className="flex flex-col items-center justify-center text-center">
+        <div className="pt-10 flex flex-col items-center justify-center text-center">
             <Titulo texto="CATEGORIAS" />
 
-            <div className="flex flex-row gap-4 ml-4 w-full py-8 overflow-x-auto justify-start md:justify-center">
+            <div className="flex flex-row gap-4 ml-4 w-full py-8 overflow-x-auto
+                            justify-start md:justify-center pr-5 sm:pr-0">
                 {categorias.map((categoria) => (
                     <IconeRedondo
                         key={categoria.id}
@@ -111,7 +111,7 @@ function Produtos() {
                 <Titulo texto="PRODUTOS" />
             </div>
 
-            <div className="pt-2 flex justify-center items-center w-full max-w-2xl">
+            <div className="pt-2 flex justify-center items-center w-[90vw] sm:w-full max-w-2xl">
                 <BarraDePesquisa
                     searchValue={searchTerm}
                     onAddClick={handleAddClick}
@@ -120,7 +120,7 @@ function Produtos() {
             </div>
 
             <div className="flex flex-col items-center justify-center pt-6 w-full max-w-3xl">
-                <div className="flex flex-col gap-4 w-full">
+                <div className="flex flex-col gap-4 w-[90%] sm:w-full">
                     {produtos
                         .filter(produto =>
                             (categoriaSelecionada === null || produto.categoria?.id === categoriaSelecionada) &&

@@ -39,6 +39,7 @@ function Sobre() {
 
     return (
         <div className="max-w-4xl mx-auto p-6 bg-gray-50 font-sans">
+
             {/* Header com gradiente e animação */}
             <div className="relative rounded-xl overflow-hidden mb-12 shadow-xl">
                 <div className="absolute inset-0 bg-gradient-to-r from-red-600 to-red-800 opacity-90"></div>

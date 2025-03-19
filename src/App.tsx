@@ -6,13 +6,10 @@ import Navbar from "./components/navbar/NavBar";
 
 import Perfil from "./pages/perfil/perfil";
 import FooterPrincipal from "./components/footer/FooterPrincipal";
-import FooterLogado from "./components/footer/FooterLogado";
 import Home from "./pages/home/Home";
-import CardCategoria from "./components/cardCategoria/CardCategoria";
 import Categorias from "./pages/categorias/Categorias";
 import CadastrarUsuario from "./pages/cadastrarusuario/CadastrarUsuario";
 import Cadastro from "./pages/cadastro/Cadastro";
-import EditarCadastro from "./pages/editarcadastro/EditarCadastro";
 import Login from "./pages/login/Login";
 
 import Produtos from "./pages/produtos/Produtos";

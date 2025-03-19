@@ -1,11 +1,7 @@
-import { useContext, useEffect, useState } from 'react';
 import Categoria from '../../models/Categoria'
 import Texto from '../texto/Texto'
 import Titulo from '../titulo/Titulo'
 import { PencilSimple, Trash } from '@phosphor-icons/react'
-import { AuthContext } from '../../contexts/AuthContext';
-import { useNavigate, useParams } from 'react-router-dom';
-import { buscar, deletar } from '../../services/service';
 
 interface CardCategoriaProps {
     categoria: Categoria;

@@ -57,10 +57,10 @@ function Home() {
                     />
                 </div>
 
-                <div className="flex flex-row gap-4 ml-4 w-full py-8 overflow-x-auto justify-start md:justify-center">
+                <div className="flex flex-row gap-4 ml-4 w-full py-8 overflow-x-auto justify-start md:justify-center pr-5 sm:pr-0">
                     <Link to={"/categorias"}>
                         <IconeRedondo
-                            link="https://i.imgur.com/EmYFVh1.png" bgCor="bg-green-500" nome="Saladas" />
+                            link="https://i.imgur.com/EmYFVh1.png" bgCor="bg-green-600" nome="Saladas" />
                     </Link>
                     
                     <Link to={"/categorias"}>
@@ -81,7 +81,7 @@ function Home() {
                 </div>
             </div>
 
-            <div className="flex flex-col bg-green-500 justify-center items-center pt-8 min-h-100">
+            <div className="flex flex-col bg-green-600 justify-center items-center pt-8 min-h-100">
                 <div className="flex flex-col gap-2 text-center">
                     <Titulo
                         texto="SOMOS MAIS"
@@ -96,7 +96,7 @@ function Home() {
                     </Link>
 
                 </div>
-                <div className="flex flex-row gap-2 pb-5 overflow-x-auto w-full justify-start md:justify-center ml-4">
+                <div className="flex flex-row gap-2 pb-5 overflow-x-auto w-full justify-start md:justify-center ml-4 pr-5 sm:mr-0">
                     {produtos.map((produto) => (
                         <CardProduto
                             nome={produto.nome}
