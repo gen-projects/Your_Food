@@ -1,4 +1,3 @@
-import Produto from "../../models/Produto";
 
 interface CardProdutoProps{
     // produto: Produto;
@@ -16,7 +15,7 @@ function CardProduto({nome, descricao,preco,url}: CardProdutoProps) {
             </div>
             <div className="text-left w-40">
                 <h2 className="text-lg font-semibold">{nome}</h2>
-                <p className="text-sm text-gray-600">{descricao}</p>
+                <p className="text-sm text-gray-600 line-clamp-4 sm:line-clamp-3 h-15">{descricao}</p>
                 <p className="text-md font-bold text-end p-1">R${preco}</p>
             </div>
         </div>

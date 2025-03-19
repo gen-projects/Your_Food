@@ -63,9 +63,9 @@ function Categorias() {
     };
 
     return (
-        <div className='flex flex-col items-center justify-center text-center'>
+        <div className='pt-10 flex flex-col items-center justify-center text-center'>
             <Titulo texto='CATEGORIAS' />
-            <div className='pt-4 flex justify-center items-center w-full max-w-2xl'>
+            <div className='pt-4 flex justify-center items-center w-[90vw] sm:w-full max-w-2xl '>
                 <BarraDePesquisa
                     searchValue={searchTerm}
                     onAddClick={handleAddClick}
@@ -74,7 +74,7 @@ function Categorias() {
             </div>
 
             <div className='flex flex-col text-start items-center justify-center'>
-                <div className='flex flex-col pt-4 gap-3'>
+                <div className='flex flex-col pt-4 gap-3 w-[90vw] sm:w-full '>
                     {categorias
                         .filter(categoria =>
                             categoria.descricao.toLowerCase().includes(searchTerm.toLowerCase()) // Filtro de pesquisa por nome da categoria

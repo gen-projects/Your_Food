@@ -29,7 +29,7 @@ const Navbar: React.FC = () => {
 
     return (
         <header className="bg-white shadow-md p-4 relative">
-            <div className="container mx-auto flex items-center justify-between">
+            <div className="container mx-auto flex items-center justify-between z-1">
                 <div className="flex items-center">
                     <Link to={"/"}>
                     <img
@@ -45,7 +45,7 @@ const Navbar: React.FC = () => {
                 {/* Hamburger Menu Button */}
                 <button
                     ref={buttonRef}
-                    className="text-red-500 focus:outline-none"
+                    className="text-red-500 focus:outline-none "
                     onClick={() => setMenuOpen(!menuOpen)}
                 >
                     {menuOpen ? <X size={28} /> : <Menu size={28} />}

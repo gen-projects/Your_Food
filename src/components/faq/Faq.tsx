@@ -13,7 +13,9 @@ function Faq({pergunta, resposta}: PropsFaq) {
     return (
         <div
             onClick={() => setExpandido(!expandido)}
-            className="flex flex-col bg-gray-300 px-4 py-3 mb-4 rounded-2xl max-w-xl cursor-pointer transition-all duration-300"
+            className="flex flex-col bg-gray-300 px-4 py-3 mb-4 rounded-2xl  
+                        sm:max-w-xl cursor-pointer transition-all duration-300
+                        max-w-[90vw]"
         >
             <div className="flex justify-between items-center">
                 <p className="text-lg font-medium text-gray-800">
