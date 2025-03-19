@@ -36,8 +36,9 @@ function CardListaProduto({
         </p>
 
         <p
-          className="inline border-1 rounded-md bg-emerald-400 border-emerald-500
-                         text-white font-semibold px-1 mt-2 "
+          className={`inline border-1 rounded-md bg-emerald-400 border-emerald-500
+                    text-white font-semibold px-1 mt-2 
+                    ${produto.categoria.saudavel ? 'bg-emerald-400 border-emerald-500' : 'bg-red-400 border-red-500'}`}
         >
           {produto.categoria.saudavel ? "Saudável" : "Não Saudável"}
         </p>

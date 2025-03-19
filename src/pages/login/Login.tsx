@@ -33,7 +33,7 @@ function Login() {
                         justify-center lg:justify-between min-h-screen">
 
             <div className=' w-full lg:w-1/2 flex justify-center items-start 
-                            sm:items-center pb-50'>
+                            sm:items-center pb-50 pt-15'>
                 
                 <form
                     className="p-5 sm:p-5 flex justify-center items-center flex-col 
